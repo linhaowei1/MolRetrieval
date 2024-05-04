@@ -1,0 +1,10 @@
+MGLTOOLS_PATH = '/home/haowei/MGLTools-1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24'
+EMBEDDING_DIR = '/home/haowei/Desktop/repos/DRR/retrieve/libs'
+# SMILES_LIB_PATH = "/home/haowei/Desktop/repos/DRR/retrieve/library.txt"
+SMILES_LIB_PATH = "/home/haowei/Desktop/repos/DRR/retrieve/libs/library_size.txt"
+CROSSDOCKED_PATH = "/home/haowei/Desktop/repos/DRR/benchmarks/crossdocked/data"
+BLOCKSIZE = 1e6
+CHEMBERTA_PATH = "/home/haowei/Desktop/repos/DRR/retrieve/ChemBERTa/chemBERTa-77M-MTR"
+BIOT5_PATH = "/home/haowei/Desktop/repos/DRR/retrieve/BioT5/biot5"
+MOLT5_PATH = "/home/haowei/Desktop/repos/DRR/retrieve/MolT5/molt5"
+CACHE_PATH = "/home/haowei/Desktop/repos/DRR/misc/cache.json"

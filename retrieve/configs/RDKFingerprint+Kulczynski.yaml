@@ -1,0 +1,6 @@
+distance_type: Kulczynski
+embedding_type: RDKFingerprint
+prunning: false
+query_path: /home/haowei/Desktop/repos/DRR/benchmarks/crossdocked/ligand_smiles.txt
+save_path: /home/haowei/Desktop/repos/DRR/benchmarks/crossdocked/retrieve
+topk: 5
