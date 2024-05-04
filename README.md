@@ -2,17 +2,21 @@
 
 This repo offers many possible ways to retrieve molecules that are similar to a target molecule from a large molecule library.
 
-[toc]
+- [MolRetrieve](#molretrieve)
+  - [TODOs](#todos)
+  - [Understanding this repo](#understanding-this-repo)
+  - [Getting Started](#getting-started)
+  - [Questions or Suggestions?](#questions-or-suggestions)
 
-## TODOs
+## TODOs 
 
-[] Clean up the hard-coding and unnecessary files.
+- [ ] Clean up the hard-coding and unnecessary files.
 
-[] Support SMILES processing for the corpus.
+- [ ] Support SMILES processing for the corpus.
 
-[] Benchmark (performance, efficiency) different retrieval methods.
+- [ ] Benchmark (performance, efficiency) different retrieval methods.
 
-[] Support more promising retrieval methods.
+- [ ] Support more promising retrieval methods.
 
 ## Understanding this repo
 
