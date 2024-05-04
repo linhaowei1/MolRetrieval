@@ -72,7 +72,7 @@ ogb==1.3.5
 
 4. **Build embedding libs.** We provide code for building embedding library as `build_lib.py` and `retrieve/models/SSL/utils.py` and `retrieve/models/MolCLR/utils.py` (they will be merged together in the future). `build_lib.py` supports the embedding of fingerprints and molecule language models. The lib building may be time-consuming (maybe several hours). You can adjust the `blocksize` and `chunksize` according to your hardware (blocksize is like `batch_size` in ML training, and we will save the embeddings in one file for one chunk). If you don't want to retrieve using some specific embeddings, you can skip the lib building for those types of embedding.
 
-5. **Begin Retrieval!** We'd like to use a `config.yaml` for argument parsing. A config file typically consists of the arguments such as `distance_type`, `embedding_type`,`prunning`, `query_path`, `save_path`, `topk`. 
+5. **Begin Retrieval!** We'd like to use a `config.yaml` for argument parsing (see `retrieve/configs` for examples). A config file typically consists of the arguments such as `distance_type`, `embedding_type`,`prunning`, `query_path`, `save_path`, `topk`. 
 
    - The supported distance types are: 
 
