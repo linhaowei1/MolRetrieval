@@ -47,7 +47,7 @@ ogb==1.3.5
 
 *Notice:* `ogb==1.3.5` is for SSL-based models likr GraphMVP. Here's an [issue](https://github.com/chao1224/GraphMVP/issues/23) about the version of ogb.
 
-2. **Preprocessing corpus**. Download your molecule corpus from [eMolecules](https://downloads.emolecules.com/free/) in SMILES form. Process it into a line "SMILES size" for each molecule, and save it in `SMILES_LIB_PATH` assigned in `utils/env_utils.py`. We will use the code snippet below to load this corpus:
+2. **Preprocessing corpus**. Download your molecule corpus from [eMolecules](https://downloads.emolecules.com/free/) in SMILES form. Process it into a line "SMILES size" (such as `COO 3`, `C1CCCCC1 6`) for each molecule, and save it in `SMILES_LIB_PATH` assigned in `utils/env_utils.py`. We will use the code snippet below to load this corpus:
 
    ```python
    with open(SMILES_LIB_PATH, 'r') as f:
@@ -58,7 +58,7 @@ ogb==1.3.5
 
 3. **Prepare model checkpoints**. To run `ChemBERTa`, `BioT5`, `MolT5`, and other SSL-based graph models, you need to download the corresponding checkpoints. When they're done, make sure the paths in  `utils/env_utils.py` is correct.
 
-   1. Download molecule language models: We suggest using `huggingface-cli` to download the models. Use the following command (here's an examplar command for ChemBERTa):
+   1. Download molecule language models: We suggest using `huggingface-cli` (check [this guide](https://huggingface.co/docs/huggingface_hub/guides/download), you need to install the latest `huggingface_hub` for downloading) to download the models. Use the following command (here's an examplar command for ChemBERTa):
 
       ```bash
       MODEL_DIR="ChemBERTa-77M-MTR"
