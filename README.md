@@ -22,7 +22,8 @@ This repo offers many possible ways to retrieve molecules that are similar to a 
 
 A retrieval process consists of three parts:
 
-- **Build molecule corpus**. We need to have a large candidate moelcule library, where we can retreive molecules from. Here we provide the example of using [eMolecules](https://downloads.emolecules.com/free/), which consist of 231M commercially available molecules. You can download the latest version of `version.smi.gz` for all the smiles.
+- **Build molecule corpus**. We need to have a large candidate moelcule library, from which we can retreive molecules. Here we provide the example of using [eMolecules](https://downloads.emolecules.com/free/), which consist of more than 200M commercially available molecules. You can download the latest version of `version.smi.gz` for all the smiles.
+
 - **Choose an embedding type**. To accelerate the retrieval process, we have to convert each molecule to an embedding first. We provide various choices including SMILE-based fingerprints (`MACCSkeys`, `RDKFingerprint`, `EstateFingerprint`), molecule language models (`ChemBERTa`, `MolT5`, `BioT5`), and graph-based molecule representations (`Grover`, `AttrMask`, `GPT-GNN`, `GraphCL`, `GraphMVP`, `MolCLR`) learned via self-supervised learning. 
 
 - **Choose a distance function**. Once we've got the embeddings of the corpus and our target molecule, we need to choose a distance function to measure the *similarity* of two embeddings. Then the top-k similar molecules from the corpus will be retrieved by searching (we use `heapq.nsmallest`). We provide many distance choices such as `tanimoto`, `dice`, `cosine`, `euclidean`, `sokal`, `russel`, `kulczynski`, `McConnaughey`. Notice that the majority of the distances are for fingerprint-based embeddings. If you are using neural representations, we suggest trying only `cosine` and `euclidean` distances.
