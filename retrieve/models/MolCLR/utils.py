@@ -17,8 +17,9 @@ from torch_geometric.data import Data
 from .dataset import MoleculeDataset, ATOM_LIST, CHIRALITY_LIST, BOND_LIST, BONDDIR_LIST
 from .model import GINet
 
+from utils.env_utils import *
 
-EMBEDDING_DIR = '/home/haowei/Desktop/repos/DRR/retrieve/libs'
+
 embedType = 'MolCLR'
 batch_size = 1000
 chunksize = 1e6
@@ -31,7 +32,7 @@ def init_molclr():
         drop_ratio=0, 
         pool='mean',
     )
-    model.load_state_dict(torch.load('/home/haowei/Desktop/repos/DRR/retrieve/models/MolCLR/ckpt/pretrained_gin/checkpoints/model.pth', map_location='cpu'))
+    model.load_state_dict(torch.load(MOLCLR_PATH, map_location='cpu'))
     model.eval()
     
     model = model.cpu()
@@ -84,7 +85,7 @@ def main():
     config = yaml.load(open("config.yaml", "r"), Loader=yaml.FullLoader)
     print(config)
 
-    dataset = MoleculeDataset('/home/haowei/Desktop/repos/DRR/retrieve/libs/library_size.txt')
+    dataset = MoleculeDataset(SMILES_LIB_PATH)
 
     dataloader = DataLoader(dataset=dataset, batch_size=batch_size, num_workers=25, drop_last=False, shuffle=False)
     model = GINet(
@@ -94,7 +95,7 @@ def main():
         drop_ratio=config['model']['drop_ratio'], 
         pool=config['model']['pool'],
     )
-    model.load_state_dict(torch.load('/home/haowei/Desktop/repos/DRR/retrieve/models/MolCLR/ckpt/pretrained_gin/checkpoints/model.pth', map_location='cpu'))
+    model.load_state_dict(torch.load(MOLCLR_PATH, map_location='cpu'))
     model.eval()
     model = model.cuda()
 

@@ -1,6 +1,0 @@
-distance_type: Cosine
-embedding_type: AttrMask
-prunning: true
-query_path: /home/haowei/Desktop/repos/DRR/benchmarks/crossdocked/ligand_smiles.txt
-save_path: /home/haowei/Desktop/repos/DRR/benchmarks/crossdocked/retrieve
-topk: 5

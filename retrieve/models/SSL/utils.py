@@ -18,16 +18,16 @@ from .model import GNN
 from .graphMVP import GNNComplete
 
 from tqdm import tqdm
-
-EMBEDDING_DIR = '/home/haowei/Desktop/repos/DRR/retrieve/libs'
+from utils.env_utils import *
 
 embedType = {
-    'GROVER': '/home/haowei/Desktop/repos/DRR/retrieve/models/SSL/ckpts/Motif.pth',
-    'AttrMask': '/home/haowei/Desktop/repos/DRR/retrieve/models/SSL/ckpts/AM.pth',
-    'GPT-GNN': '/home/haowei/Desktop/repos/DRR/retrieve/models/SSL/ckpts/GPT_GNN.pth',
-    'GraphCL': '/home/haowei/Desktop/repos/DRR/retrieve/models/SSL/ckpts/GraphCL.pth',
-    'GraphMVP': '/home/haowei/Desktop/repos/DRR/retrieve/models/SSL/ckpts/GraphMVP.pth'
+    'GROVER': MOTIF_PATH,
+    'AttrMask': ATTRMASK_PATH,
+    'GPT-GNN': GPTGNN_PATH,
+    'GraphCL': GRAPHCL_PATH,
+    'GraphMVP': GRAPHMVP_PATH
 }
+
 batch_size = 1000
 chunksize = 1e6
 
@@ -53,7 +53,7 @@ def ssl_embedding(smiles, placeholder, model):
 @torch.no_grad()
 def main(emb_type):
 
-    dataset = MoleculeDataset('/home/haowei/Desktop/repos/DRR/retrieve/libs/library_size.txt')
+    dataset = MoleculeDataset(SMILES_LIB_PATH)
 
     dataloader = DataLoader(dataset=dataset, batch_size=batch_size, num_workers=25, drop_last=False, shuffle=False)
     if emb_type == 'GraphMVP':
@@ -85,6 +85,6 @@ def main(emb_type):
     torch.save(final_embedding, os.path.join(EMBEDDING_DIR, emb_type, str(int(i // chunksize)) + '.pt'))
 
 if __name__ == "__main__":
-    for emb_type in ['GraphMVP']:
+    for emb_type in embedType.keys():
         print(emb_type)
         main(emb_type)

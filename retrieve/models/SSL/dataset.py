@@ -109,6 +109,7 @@ class MoleculeDataset(InMemoryDataset):
         
     def get(self, index):
         
+        # discard these molecules that are too large!
         if len(self.smiles_data[index]) >= 600:
             mol = Chem.MolFromSmiles('COO')
         else:

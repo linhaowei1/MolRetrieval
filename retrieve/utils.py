@@ -16,7 +16,6 @@ from rdkit.Chem.EState import Fingerprinter
 from .models.ChemBERTa.utils import *
 from .models.BioT5.utils import *
 from .models.MolT5.utils import *
-from .models.UniMol.utils import *
 from .models.SSL.utils import *
 from .models.MolCLR.utils import *
 
@@ -72,7 +71,6 @@ modelBasedEmbeddingTypes = {
     "ChemBERTa": [init_chemberta, chemberta_embedding], 
     "MolT5": [init_molt5, molt5_embedding], 
     "BioT5": [init_biot5, biot5_embedding],
-    'UniMol': [init_UniMol, UniMol_embedding],
     'MolCLR': [init_molclr, molclr_embedding],
     'GROVER': [partial(init_ssl, 'GROVER'), ssl_embedding],
     'AttrMask': [partial(init_ssl, 'AttrMask'), ssl_embedding],

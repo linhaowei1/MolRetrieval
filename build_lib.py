@@ -6,11 +6,9 @@ import argparse
 import os
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--embedding_type', type=str, choices=['MACCSkeys', 'RDKFingerprint', 'EStateFingerprint', 'ChemBERTa', 'MolT5', 'BioT5', 'UniMol'], required=True)
+parser.add_argument('--embedding_type', type=str, choices=['MACCSkeys', 'RDKFingerprint', 'EStateFingerprint', 'ChemBERTa', 'MolT5', 'BioT5'], required=True)
 args = parser.parse_args()
 
-if args.embedding_type == 'UniMol':
-    Warning("UniMol is very slow, please use it with caution.")
 
 blocksize = 5000
 chunksize = 1e6
@@ -31,7 +29,7 @@ os.makedirs(os.path.join(EMBEDDING_DIR, embedType), exist_ok=True)
 
 for i in tqdm(range(0, len(smiles), blocksize), total=len(smiles)//blocksize):
     
-    if args.embedding_type in ['ChemBERTa', 'MolT5', 'BioT5', 'UniMol']:
+    if args.embedding_type in ['ChemBERTa', 'MolT5', 'BioT5']:
         smiles_block = smiles[i:i+blocksize]
     else:
         smiles_block = [Chem.MolFromSmiles(x) for x in smiles[i:i+blocksize]]
